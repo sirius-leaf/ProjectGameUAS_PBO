@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=roket
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ roket\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ checkKeyPress()
+comment3.params=
+comment3.target=void\ shooting()
+comment3.text=public\ void\ tembak()\ {\r\n\ \ \ \ \ \ \ \ if\ (delayTembak\ >\ 0)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ delayTembak--;\r\n\ \ \ \ \ \ \ \ \ \ \ \ return;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ if\ (Greenfoot.mouseClicked(null))\ {\r\n\ \ \ \ \ \ \ \ MouseInfo\ mouse\ \=\ Greenfoot.getMouseInfo();\r\n\ \ \ \ \ \ \ \ if\ (mouse\ \!\=\ null)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ int\ targetX\ \=\ mouse.getX();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ targetY\ \=\ mouse.getY();\r\n\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ dx\ \=\ targetX\ -\ getX();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ dy\ \=\ targetY\ -\ getY();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\ angle\ \=\ Math.toDegrees(Math.atan2(dy,\ dx));\r\n\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ laser\ laser\ \=\ new\ laser();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getWorld().addObject(laser,\ getX(),\ getY());\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ laser.setRotation((int)\ angle);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delayTembak\=\ 15;//\ arah\ tembakan\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment4.params=
+comment4.target=void\ checkCollision()
+numComments=5
