@@ -19,7 +19,7 @@ public class roket extends Actor
         checkKeyPress();
         //tembak();
         shooting();
-        checkCollision();
+        //checkCollision();
         //if (getWorld() == null) return;
     }
     
