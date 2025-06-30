@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class alien2 extends Actor
+public class alien2 extends AlienShip
 {
     /**
      * Act - do whatever the alien2 wants to do. This method is called whenever
@@ -14,25 +14,22 @@ public class alien2 extends Actor
      */
     public void act()
     {
+        if (justStarted) {
+            health = 1;
+            
+            justStarted = false;
+        }
+        
+        HitCheck();
+        
         setLocation(getX()-10, getY()); //arah gerakan alien2
         
         if (getX() <= 0) 
         {
-            setLocation(getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()) + 50);
+            setLocation(getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
         }
         
-        if (getY() >= getWorld().getHeight() - 1) 
-        {
-            setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()), -50);
-        }
-    
-        if(isTouching(laser.class)) 
-        {
-           removeTouching(laser.class);
-           getWorld().addObject(new ledakan(),getX(),getY());
-           alien2 newalien2 = new alien2();
-            getWorld().addObject(newalien2, getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
-           getWorld().removeObject(this);
-        }
+        alien2 newAlien2 = new alien2();
+        Death(newAlien2);
     }
 }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class alien extends Actor
+public class Alien extends AlienShip
 {
     /**
      * Act - do whatever the alien wants to do. This method is called whenever
@@ -17,23 +17,30 @@ public class alien extends Actor
 
     public void act()
     {
+        if (justStarted) {
+            health = 30;
+            
+            justStarted = false;
+        }
+        
         // Menggerakkan objek ke atas atau ke bawah
         setLocation(getX(), getY() + speed);
 
         // Jika mencapai batas bawah, balik arah ke atas
-        if (getY() >= getWorld().getHeight() - 1) 
+        if (getY() >= getWorld().getHeight() - 1 || getY() <= 0) 
         {
-            speed = -5; // Gerak ke atas
+            speed *= -1; // Gerak ke atas
         }
-
-        // Jika mencapai batas atas, balik arah ke bawah
-        if (getY() <= 0) 
-        {
-            speed = 5; // Gerak ke bawah
+        
+        HitCheck();
+        
+        if (HealthIsZero()) {
+            getWorld().removeObject(this);
         }
         
         shooting();
     }
+    
     public void shooting()
     {
         delay++;

@@ -28,11 +28,11 @@ public class asteroid extends Actor
 
         if(isTouching(laser.class))
         {
-           removeTouching(laser.class);
-           getWorld().addObject(new ledakan(),getX(),getY());
-           asteroid newasteroid = new asteroid();
+            removeTouching(laser.class);
+            getWorld().addObject(new ledakan(),getX(),getY());
+            asteroid newasteroid = new asteroid();
             getWorld().addObject(newasteroid, getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
-           getWorld().removeObject(this);
+            getWorld().removeObject(this);
         }
     
     }
