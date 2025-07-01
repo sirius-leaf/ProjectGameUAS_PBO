@@ -8,23 +8,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ledakan extends Actor
 {
-    GreenfootImage img = new GreenfootImage("ledakan.png");
+    GreenfootImage[] frame = {
+        new GreenfootImage("explosion01.png"),
+        new GreenfootImage("explosion02.png"),
+        new GreenfootImage("explosion03.png"),
+        new GreenfootImage("explosion04.png"),
+    };
+    
+    int lifeTime = 20;
+    int delay=0;
     
     /**
      * Act - do whatever the ledakan wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int delay=0;
     public void act()
     {
-        if(delay >= 50) {
+        if(delay++ >= lifeTime) {
             getWorld().removeObject(this);
         } else {
-            delay++;
-            
-            /*int imgScale = (int)(70 * ((50 - delay) / 50.0));
-            img.scale(imgScale, imgScale);
-            setImage(img);*/
+            setImage(frame[(int)Math.clamp(Math.floor(delay / 5.0), 0, 3)]);
         }
     }
 }

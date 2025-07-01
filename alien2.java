@@ -30,6 +30,13 @@ public class alien2 extends AlienShip
         }
         
         alien2 newAlien2 = new alien2();
+        
+        galaxy world = (galaxy) getWorld();
+        if(HealthIsZero())
+        {
+            world.addScore(10);
+        }
+        
         Death(newAlien2);
     }
 }

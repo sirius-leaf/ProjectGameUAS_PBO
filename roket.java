@@ -11,6 +11,9 @@ public class Roket extends Actor
     int health = 5;
     int delay = 0;
     boolean isShooting = false;
+    boolean justStarted = true;
+    
+    GreenfootSound bgm = new GreenfootSound("bgm.wav");
     
     /**
      * Act - do whatever the roket wants to do. This method is called whenever
@@ -18,6 +21,12 @@ public class Roket extends Actor
      */
     public void act()
     {
+        if (justStarted) {
+            bgm.playLoop();
+            
+            justStarted = false;
+        }
+        
         checkKeyPress();
         facingMouse();
         checkCollision();

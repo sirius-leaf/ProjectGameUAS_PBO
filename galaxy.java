@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class galaxy extends World
 {
-    public static int score = 0;
+    public int score = 0;
     
     
     /**
@@ -29,11 +29,13 @@ public class galaxy extends World
      */
     private void prepare()
     {
+        score = 0;
+        
         Roket roket = new Roket();
         addObject(roket,70,296);
         roket.setRotation(90);
         
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             asteroid asteroid = new asteroid();
             addObject(asteroid, Greenfoot.getRandomNumber(getWidth() - 200) + 200, Greenfoot.getRandomNumber(getHeight()));
             
@@ -55,7 +57,7 @@ public class galaxy extends World
         addObject(bossHealthBarFrame,0,0);
     }
     
-    public void addScoore (int points) {
+    public void addScore (int points) {
         this.score += points;
         this.tampilScore();
     }
