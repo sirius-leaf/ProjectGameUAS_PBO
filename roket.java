@@ -13,7 +13,7 @@ public class Roket extends Actor
     boolean isShooting = false;
     boolean justStarted = true;
     
-    GreenfootSound bgm = new GreenfootSound("bgm.wav");
+    public GreenfootSound bgm = new GreenfootSound("bgm.wav");
     
     /**
      * Act - do whatever the roket wants to do. This method is called whenever

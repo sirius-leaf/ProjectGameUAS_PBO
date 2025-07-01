@@ -35,6 +35,8 @@ public class Alien extends AlienShip
         HitCheck();
         
         if (HealthIsZero()) {
+            Roket player = getWorld().getObjects(Roket.class).get(0);
+            player.bgm.stop();
             Greenfoot.setWorld(new Win());
         }
         
