@@ -8,16 +8,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Alien extends AlienShip
 {
+    int delay = 0;
+    int speed = 5;
+    int winDelay = 0;
+    
+    public Alien() {
+        GreenfootImage img = getImage();
+        img.scale(147, 162); // atur ke ukuran yang diinginkan
+        setImage(img);
+    }
+    
     /**
      * Act - do whatever the alien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int delay = 0;
-    int speed = 5;
-    int winDelay = 0;
-
     public void act()
     {
+        if (getX() > 1000) move(-10);
+        
         if (justStarted) {
             health = 30;
             

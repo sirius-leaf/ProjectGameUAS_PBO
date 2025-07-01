@@ -15,6 +15,14 @@ public class Roket extends Actor
     
     public GreenfootSound bgm = new GreenfootSound("bgm.wav");
     
+    GreenfootImage[] frame = {
+        new GreenfootImage("player (1).png"),
+        new GreenfootImage("player (2).png"),
+        new GreenfootImage("player (3).png"),
+    };
+    
+    int[] frameTime = {0, 0};
+    
     /**
      * Act - do whatever the roket wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -27,6 +35,7 @@ public class Roket extends Actor
             justStarted = false;
         }
         
+        Animate();
         checkKeyPress();
         facingMouse();
         checkCollision();
@@ -52,7 +61,7 @@ public class Roket extends Actor
     public void shooting()
     {
         int bulletOriginDistance = 100;
-        int playerRotation = getRotation() - 90;
+        int playerRotation = getRotation();
         
         delay++;
         if(delay==15) // kecepatan nembak roket
@@ -69,7 +78,7 @@ public class Roket extends Actor
         
         if (mouse != null) {
             int rotation = (int) (Math.atan2(mouse.getY() - getY(), mouse.getX() - getX()) * (180.0 / Math.PI));
-            setRotation(rotation + 90);
+            setRotation(rotation);
             
             if (Greenfoot.mousePressed(null)) {
                 isShooting = true;
@@ -80,7 +89,6 @@ public class Roket extends Actor
             if (isShooting) shooting();
         }
     }
-    
     
     public void checkCollision() {
         galaxy scene = (galaxy)getWorld();
@@ -119,6 +127,14 @@ public class Roket extends Actor
             Greenfoot.delay(5);
             bgm.stop();
             Greenfoot.setWorld(new gameOver());
+        }
+    }
+    
+    public void Animate() {
+        if (frameTime[0]++ > 2) {
+            setImage(frame[frameTime[1]++ % 3]);
+            
+            frameTime[0] = 0;
         }
     }
 }

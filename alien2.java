@@ -8,6 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class alien2 extends AlienShip
 {
+    int moveSpeed;
+    
+    public alien2() {
+        moveSpeed = 5 + Greenfoot.getRandomNumber(10);
+    }
+    
     /**
      * Act - do whatever the alien2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,7 +28,7 @@ public class alien2 extends AlienShip
         
         HitCheck();
         
-        setLocation(getX()-10, getY()); //arah gerakan alien2
+        setLocation(getX() - moveSpeed, getY()); //arah gerakan alien2
         
         if (getX() <= 0) 
         {

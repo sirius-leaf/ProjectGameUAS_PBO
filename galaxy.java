@@ -31,30 +31,19 @@ public class galaxy extends World
     {
         score = 0;
         
+        WorldManager worldManager = new WorldManager();
+        addObject(worldManager,0,0);
+
+        Background background = new Background();
+        addObject(background, 1200, 300);
+
         Roket roket = new Roket();
         addObject(roket,70,296);
-        roket.setRotation(90);
-        
-        for (int i = 0; i < 2; i++) {
-            asteroid asteroid = new asteroid();
-            addObject(asteroid, Greenfoot.getRandomNumber(getWidth() - 200) + 200, Greenfoot.getRandomNumber(getHeight()));
-            
-        }
-        
+
         for (int i = 0; i < 3; i++) {
             alien2 alien2 = new alien2();
             addObject(alien2, Greenfoot.getRandomNumber(getWidth() - 500) + 500, Greenfoot.getRandomNumber(getHeight()));
         }
-        
-
-        Alien alien = new Alien();
-        addObject(alien,1050,98);
-
-        HealthBarBoss healthBarBoss = new HealthBarBoss();
-        addObject(healthBarBoss,0,0);
-        
-        BossHealthBarFrame bossHealthBarFrame = new BossHealthBarFrame();
-        addObject(bossHealthBarFrame,0,0);
     }
     
     public void addScore (int points) {
@@ -68,5 +57,24 @@ public class galaxy extends World
     
     public void tampilScore() {
         showText("Score : " + score, 100, 50);
+    }
+    
+    public void SpawnBoss() {
+        Alien alien = new Alien();
+        addObject(alien, 1200, 98);
+
+        HealthBarBoss healthBarBoss = new HealthBarBoss();
+        addObject(healthBarBoss,0,0);
+
+        BossHealthBarFrame bossHealthBarFrame = new BossHealthBarFrame();
+        addObject(bossHealthBarFrame,0,0);
+    }
+    
+    public void SpawnAsteroid(int jumlah) {
+        for (int i = 0; i < jumlah; i++) {
+            asteroid asteroid = new asteroid();
+            addObject(asteroid, Greenfoot.getRandomNumber(getWidth() - 200) + 200, 0);
+
+        }
     }
 }
