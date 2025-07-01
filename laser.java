@@ -8,6 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class laser extends Actor
 {
+    public laser() {}
+    
+    public laser(int rotation) {
+        setRotation(rotation);
+    }
+    
     /**
      * Act - do whatever the laser wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

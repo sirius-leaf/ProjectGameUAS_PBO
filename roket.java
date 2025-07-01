@@ -6,93 +6,110 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class roket extends Actor
+public class Roket extends Actor
 {
+    int health = 5;
+    int delay = 0;
+    boolean isShooting = false;
+    boolean justStarted = true;
+    
+    GreenfootSound bgm = new GreenfootSound("bgm.wav");
+    
     /**
      * Act - do whatever the roket wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int delay = 0;
-    int delayTembak = 0;
     public void act()
     {
+        if (justStarted) {
+            bgm.playLoop();
+            
+            justStarted = false;
+        }
+        
         checkKeyPress();
-        //tembak();
-        shooting();
-        //checkCollision();
+        facingMouse();
+        checkCollision();
+        
+        getWorld().showText("Health : " + health, 100, 100);
         //if (getWorld() == null) return;
     }
     
     private void checkKeyPress() {
-        if (Greenfoot.isKeyDown("up")){
+        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")){
             setLocation(getX(), getY()-5);
-        }
-        if (Greenfoot.isKeyDown("down")){
+        }else if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")){
             setLocation(getX(), getY()+5);
         }
-        if (Greenfoot.isKeyDown("left")){
+        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")){
             setLocation(getX()-5, getY());
-        }
-        if (Greenfoot.isKeyDown("right")){
+        }else if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")){
             setLocation(getX()+5, getY());
         }
     }
     
-    /*public void tembak() {
-        if (delayTembak > 0) {
-            delayTembak--;
-            return;
-        }
-        
-        if (Greenfoot.mouseClicked(null)) {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        if (mouse != null) {
-            int targetX = mouse.getX();
-                int targetY = mouse.getY();
-
-                int dx = targetX - getX();
-                int dy = targetY - getY();
-                double angle = Math.toDegrees(Math.atan2(dy, dx));
-
-                laser laser = new laser();
-                getWorld().addObject(laser, getX(), getY());
-                laser.setRotation((int) angle);
-                delayTembak= 15;// arah tembakan
-            }
-        }
-    }*/
-
-    
     public void shooting()
     {
+        int bulletOriginDistance = 100;
+        int playerRotation = getRotation() - 90;
+        
         delay++;
         if(delay==15) // kecepatan nembak roket
         {
-            getWorld().addObject(new laser(),getX()+100,getY());
+            getWorld().addObject(new laser(playerRotation), getX() + (int)(bulletOriginDistance * Math.cos(playerRotation * (Math.PI / 180.0))), getY() + (int)(bulletOriginDistance * Math.sin(playerRotation * (Math.PI / 180.0))));
+            Greenfoot.playSound("laserShootPlayer.wav");
+            
             delay=0;
+        }
+    }
+    
+    public void facingMouse() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        
+        if (mouse != null) {
+            int rotation = (int) (Math.atan2(mouse.getY() - getY(), mouse.getX() - getX()) * (180.0 / Math.PI));
+            setRotation(rotation + 90);
+            
+            if (Greenfoot.mousePressed(null)) {
+                isShooting = true;
+            } else if (Greenfoot.mouseClicked(null)) {
+                isShooting = false;
+            }
+            
+            if (isShooting) shooting();
         }
     }
     
     
     public void checkCollision() {
-        Actor alien = getOneIntersectingObject(alien.class);
+        galaxy scene = (galaxy)getWorld();
+        
+        Actor alien = getOneIntersectingObject(Alien.class);
         if (alien != null) {
-            getWorld().removeObject(this);
+            health--;
         }
         
         Actor asteroid = getOneIntersectingObject(asteroid.class);
         if (asteroid != null) {
-            getWorld().removeObject(this);
+            health--;
+            getWorld().addObject(new ledakan(),getX(),getY());
+            getWorld().removeObject(asteroid);
+            getWorld().addObject(new asteroid(), getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
         }
         
         Actor alien2 = getOneIntersectingObject(alien2.class);
         if (alien2 != null) {
-            getWorld().removeObject(this);
+            health--;
+            getWorld().addObject(new ledakan(),getX(),getY());
+            getWorld().removeObject(alien2);
+            getWorld().addObject(new alien2(), getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
         }
         
         Actor laser2 = getOneIntersectingObject(laser2.class);
         if (laser2 != null) {
-            getWorld().removeObject(this);
+            health--;
+            getWorld().addObject(new ledakan(),getX(),getY());
+            getWorld().removeObject(laser2);
         }
     }
     

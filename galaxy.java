@@ -8,8 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class galaxy extends World
 {
-    private int nyawa = 5;
-    public static int score = 0;
+    public int score = 0;
     
     
     /**
@@ -19,8 +18,7 @@ public class galaxy extends World
     public galaxy()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1200, 600, 1); 
-        tampilNyawa();
+        super(1200, 600, 1);
         tampilScore();
         prepare();
     }
@@ -31,45 +29,35 @@ public class galaxy extends World
      */
     private void prepare()
     {
-        roket roket = new roket();
+        score = 0;
+        
+        Roket roket = new Roket();
         addObject(roket,70,296);
         roket.setRotation(90);
-        asteroid asteroid = new asteroid();
-        addObject(asteroid,1160,141);
-        asteroid asteroid2 = new asteroid();
-        addObject(asteroid2,1168,344);
-        asteroid asteroid3 = new asteroid();
-        addObject(asteroid3,1157,255);
-        asteroid2.setLocation(1165,586);
-        asteroid3.setLocation(1168,581);
-        asteroid.setLocation(1174,577);
-        alien2 alien2 = new alien2();
-        addObject(alien2,1173,93);
-        alien2 alien22 = new alien2();
-        addObject(alien22,1143,335);
-        alien2 alien23 = new alien2();
-        addObject(alien23,1080,464);
-        alien2 alien24 = new alien2();
-        addObject(alien24,19,576);
-        alien2 alien25 = new alien2();
-        addObject(alien25,18,28);
-        alien alien = new alien();
-        addObject(alien,1119,87);
+        
+        for (int i = 0; i < 2; i++) {
+            asteroid asteroid = new asteroid();
+            addObject(asteroid, Greenfoot.getRandomNumber(getWidth() - 200) + 200, Greenfoot.getRandomNumber(getHeight()));
+            
+        }
+        
+        for (int i = 0; i < 3; i++) {
+            alien2 alien2 = new alien2();
+            addObject(alien2, Greenfoot.getRandomNumber(getWidth() - 500) + 500, Greenfoot.getRandomNumber(getHeight()));
+        }
+        
+
+        Alien alien = new Alien();
+        addObject(alien,1050,98);
+
+        HealthBarBoss healthBarBoss = new HealthBarBoss();
+        addObject(healthBarBoss,0,0);
+        
+        BossHealthBarFrame bossHealthBarFrame = new BossHealthBarFrame();
+        addObject(bossHealthBarFrame,0,0);
     }
     
-    public int getNyawa() {
-        return nyawa;
-    }
-    
-    public void setNyawa(int value) {
-        nyawa = value;
-    }
-    
-    public void tampilNyawa() {
-        this.showText("Life : " + nyawa, 100, 100);
-    }
-    
-    public void addScoore (int points) {
+    public void addScore (int points) {
         this.score += points;
         this.tampilScore();
     }
