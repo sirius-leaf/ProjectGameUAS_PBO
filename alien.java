@@ -35,7 +35,7 @@ public class Alien extends AlienShip
         HitCheck();
         
         if (HealthIsZero()) {
-            getWorld().removeObject(this);
+            Greenfoot.setWorld(new Win());
         }
         
         shooting();
