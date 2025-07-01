@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class laser2 extends Actor
+public class laser2 extends Lasers
 {
     /**
      * Act - do whatever the laser2 wants to do. This method is called whenever
@@ -15,7 +15,6 @@ public class laser2 extends Actor
     public void act()
     {
         setLocation(getX()-20, getY()); // arah & kecepatan tembakan laser
-        if(isAtEdge())
-            getWorld().removeObject(this);
+        removeLaserAtEdge();
     }
 }

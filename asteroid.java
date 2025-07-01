@@ -32,6 +32,7 @@ public class asteroid extends Actor
             getWorld().addObject(new ledakan(),getX(),getY());
             asteroid newasteroid = new asteroid();
             getWorld().addObject(newasteroid, getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
+            Greenfoot.playSound("smallExplode.wav");
             getWorld().removeObject(this);
         }
     

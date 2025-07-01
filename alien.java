@@ -14,6 +14,7 @@ public class Alien extends AlienShip
      */
     int delay = 0;
     int speed = 5;
+    int winDelay = 0;
 
     public void act()
     {
@@ -33,13 +34,7 @@ public class Alien extends AlienShip
         }
         
         HitCheck();
-        
-        if (HealthIsZero()) {
-            Roket player = getWorld().getObjects(Roket.class).get(0);
-            player.bgm.stop();
-            Greenfoot.setWorld(new Win());
-        }
-        
+        Death();
         shooting();
     }
     
@@ -53,6 +48,16 @@ public class Alien extends AlienShip
             Greenfoot.playSound("laserShootBoss.wav");
             
             delay=0;
+        }
+    }
+    
+    public void Death() {
+        if (HealthIsZero()) {
+            if (winDelay++ < 50) {
+                Roket player = getWorld().getObjects(Roket.class).get(0);
+                player.bgm.stop();
+                Greenfoot.setWorld(new Win());
+            }
         }
     }
 }

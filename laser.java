@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class laser extends Actor
+public class laser extends Lasers
 {
     public laser() {}
     
@@ -22,8 +22,7 @@ public class laser extends Actor
     {
         addScore();
         move(10); //arah dan kecepatan tembakan laser
-        if(isAtEdge())
-            getWorld().removeObject(this);
+        removeLaserAtEdge();
     }
     
     public void addScore() {
