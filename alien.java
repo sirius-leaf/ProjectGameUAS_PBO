@@ -47,6 +47,9 @@ public class Alien extends AlienShip
         if(delay==100) // kecepatan nembak alien
         {
             getWorld().addObject(new laser2(),getX()+100,getY());
+            
+            Greenfoot.playSound("laserShootBoss.wav");
+            
             delay=0;
         }
     }

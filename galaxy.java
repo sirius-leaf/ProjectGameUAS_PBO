@@ -35,13 +35,13 @@ public class galaxy extends World
         addObject(roket,70,296);
         roket.setRotation(90);
         
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             asteroid asteroid = new asteroid();
             addObject(asteroid, Greenfoot.getRandomNumber(getWidth() - 200) + 200, Greenfoot.getRandomNumber(getHeight()));
             
         }
         
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             alien2 alien2 = new alien2();
             addObject(alien2, Greenfoot.getRandomNumber(getWidth() - 500) + 500, Greenfoot.getRandomNumber(getHeight()));
         }
