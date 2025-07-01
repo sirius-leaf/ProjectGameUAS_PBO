@@ -27,7 +27,8 @@ public class Win extends World
      */
     private void prepare()
     {
-        retry retry = new retry();
-        addObject(retry,556,498);
+
+        playAgain playAgain = new playAgain();
+        addObject(playAgain,608,474);
     }
 }
