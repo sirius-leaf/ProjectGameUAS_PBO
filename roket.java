@@ -30,6 +30,7 @@ public class Roket extends Actor
         checkKeyPress();
         facingMouse();
         checkCollision();
+        death();
         
         getWorld().showText("Health : " + health, 100, 100);
         //if (getWorld() == null) return;
@@ -113,5 +114,11 @@ public class Roket extends Actor
         }
     }
     
-    
+    public void death () {
+        if (health <= 0){
+            Greenfoot.delay(5);
+            bgm.stop();
+            Greenfoot.setWorld(new gameOver());
+        }
+    }
 }

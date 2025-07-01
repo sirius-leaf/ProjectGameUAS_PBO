@@ -1,39 +1,35 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class menu here.
+ * Write a description of class gameOver here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class menu extends World
+public class gameOver extends World
 {
 
     /**
-     * Constructor for objects of class menu.
+     * Constructor for objects of class gameOver.
      * 
      */
-    public menu()
+    public gameOver()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 600, 1); 
         prepare();
     }
-    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        start start = new start();
-        addObject(start,572,452);
-        start.setLocation(660,461);
-        start.setLocation(584,466);
-        start.setLocation(608,503);
-        start.setLocation(593,461);
-        start.setLocation(590,474);
-        start.setLocation(644,480);
-        start.setLocation(592,472);
+        retry retry = new retry();
+        addObject(retry,594,414);
+        retry.setLocation(635,449);
+        retry.setLocation(579,445);
+        retry.setLocation(605,447);
+        retry.setLocation(596,447);
     }
 }
