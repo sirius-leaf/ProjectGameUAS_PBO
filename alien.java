@@ -13,6 +13,7 @@ public class Alien extends AlienShip
     int winDelay = 0;
     
     public Alien() {
+        super(30);
         GreenfootImage img = getImage();
         img.scale(147, 162); // atur ke ukuran yang diinginkan
         setImage(img);
@@ -26,30 +27,26 @@ public class Alien extends AlienShip
     {
         if (getX() > 1000) move(-10);
         
-        if (justStarted) {
-            health = 30;
-            
-            justStarted = false;
-        }
-        
         // Menggerakkan objek ke atas atau ke bawah
         setLocation(getX(), getY() + speed);
 
-        // Jika mencapai batas bawah, balik arah ke atas
+        // Jika mencapai batas bawah, balik arah
         if (getY() >= getWorld().getHeight() - 1 || getY() <= 0) 
         {
             speed *= -1; // Gerak ke atas
         }
         
-        HitCheck();
-        Death();
-        shooting();
+        if (!HealthIsZero()) {
+            HitCheck();
+            shooting();
+        } else {
+            Death();
+        }
     }
     
     public void shooting()
     {
-        delay++;
-        if(delay==100) // kecepatan nembak alien
+        if(delay++ >= 100) // kecepatan nembak alien
         {
             getWorld().addObject(new laser2(),getX()+100,getY());
             
@@ -59,13 +56,20 @@ public class Alien extends AlienShip
         }
     }
     
+    boolean isAlive = true;    
     public void Death() {
-        if (HealthIsZero()) {
-            if (winDelay++ < 50) {
-                Roket player = getWorld().getObjects(Roket.class).get(0);
-                player.bgm.stop();
-                Greenfoot.setWorld(new Win());
-            }
+        setImage("blank.png");
+        
+        if (isAlive) {
+            getWorld().addObject(new ledakan(2),getX(),getY());
+            
+            isAlive = false;
+        }
+        
+        if (winDelay++ > 50) {
+            Roket player = getWorld().getObjects(Roket.class).get(0);
+            player.bgm.stop();
+            Greenfoot.setWorld(new Win());
         }
     }
 }

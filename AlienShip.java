@@ -43,7 +43,9 @@ public class AlienShip extends Actor
         {
             getWorld().addObject(new ledakan(),getX(),getY());
             getWorld().addObject(ship, getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
+            
             Greenfoot.playSound("smallExplode.wav");
+            
             getWorld().removeObject(this);
         }
     }

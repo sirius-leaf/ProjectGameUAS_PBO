@@ -20,7 +20,7 @@ public class PlayerHealthBar extends Actor
         if (!getWorld().getObjects(Roket.class).isEmpty()) {
             player = getWorld().getObjects(Roket.class).get(0);
             
-            img.scale((int)(165 * (player.health / 5.0)), 42);
+            img.scale(Math.max((int)(165 * (player.health / 5.0)), 1), 42);
             setImage(img);
             
             setLocation((int)(107 - 82.5 * ((5 - player.health) / 5.0)), getY());

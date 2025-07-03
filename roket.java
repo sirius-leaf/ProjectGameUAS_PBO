@@ -35,12 +35,14 @@ public class Roket extends Actor
             justStarted = false;
         }
         
-        Animate();
-        checkKeyPress();
-        facingMouse();
-        checkCollision();
-        death();
-        //if (getWorld() == null) return;
+        if (health > 0) {
+            Animate();
+            checkKeyPress();
+            facingMouse();
+            checkCollision();
+        } else {
+            Death();
+        }
     }
     
     private void checkKeyPress() {
@@ -120,8 +122,18 @@ public class Roket extends Actor
         }
     }
     
-    public void death () {
-        if (health <= 0){
+    int deathDelay = 0;
+    boolean isAlive = true;
+    public void Death() {
+        setImage("blank.png");
+        
+        if (isAlive) {
+            getWorld().addObject(new ledakan(1),getX(),getY());
+            
+            isAlive = false;
+        }
+        
+        if (deathDelay++ > 40) {
             Greenfoot.delay(5);
             bgm.stop();
             Greenfoot.setWorld(new gameOver());

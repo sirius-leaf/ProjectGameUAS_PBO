@@ -11,6 +11,7 @@ public class alien2 extends AlienShip
     int moveSpeed;
     
     public alien2() {
+        super(1);
         moveSpeed = 5 + Greenfoot.getRandomNumber(10);
     }
     
@@ -20,12 +21,6 @@ public class alien2 extends AlienShip
      */
     public void act()
     {
-        if (justStarted) {
-            health = 1;
-            
-            justStarted = false;
-        }
-        
         HitCheck();
         
         setLocation(getX() - moveSpeed, getY()); //arah gerakan alien2

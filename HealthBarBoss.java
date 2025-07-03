@@ -6,10 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HealthBarBoss extends Actor
+public class HealthBarBoss extends BossHealthBar
 {
     GreenfootImage img = new GreenfootImage("healt_bar.png");
-    Alien alien;
     
     /**
      * Act - do whatever the HealthBarBoss wants to do. This method is called whenever
@@ -17,15 +16,14 @@ public class HealthBarBoss extends Actor
      */
     public void act()
     {
+        alien = getWorld().getObjects(Alien.class).get(0);
         
-        if (!getWorld().getObjects(Alien.class).isEmpty()) {
-            alien = getWorld().getObjects(Alien.class).get(0);
+        MoveWithAlien();
         
-            img.scale(10, (int)(80 * (alien.health / 30.0)));
-            setImage(img);
-            
-            setLocation(alien.getX() + 80, alien.getY());
-        } else {
+        img.scale(10, Math.max((int)(80 * (alien.health / 30.0)), 1));
+        setImage(img);
+        
+        if (alien.health <= 0) {
             getWorld().removeObject(this);
         }
     }
