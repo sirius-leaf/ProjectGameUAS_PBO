@@ -30,7 +30,7 @@ public class galaxy extends World
     private void prepare()
     {
         score = 0;
-        
+
         WorldManager worldManager = new WorldManager();
         addObject(worldManager,0,0);
 
@@ -44,6 +44,12 @@ public class galaxy extends World
             alien2 alien2 = new alien2();
             addObject(alien2, Greenfoot.getRandomNumber(getWidth() - 500) + 500, Greenfoot.getRandomNumber(getHeight()));
         }
+        
+        PlayerHealthBar playerHealthBar = new PlayerHealthBar();
+        addObject(playerHealthBar,107,46);
+        
+        PlayerHealthBarFrame playerHealthBarFrame = new PlayerHealthBarFrame();
+        addObject(playerHealthBarFrame,107,46);
     }
     
     public void addScore (int points) {
@@ -56,7 +62,7 @@ public class galaxy extends World
     }
     
     public void tampilScore() {
-        showText("Score : " + score, 100, 50);
+        showText("Score : " + score, 600, 40);
     }
     
     public void SpawnBoss() {

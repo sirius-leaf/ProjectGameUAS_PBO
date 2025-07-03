@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Roket extends Actor
 {
-    int health = 5;
+    public int health = 5;
     int delay = 0;
     boolean isShooting = false;
     boolean justStarted = true;
@@ -40,8 +40,6 @@ public class Roket extends Actor
         facingMouse();
         checkCollision();
         death();
-        
-        getWorld().showText("Health : " + health, 100, 100);
         //if (getWorld() == null) return;
     }
     
