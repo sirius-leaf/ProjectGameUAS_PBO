@@ -12,10 +12,7 @@ public class Lasers extends Actor
      * Act - do whatever the Lasers wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        // Add your action code here.
-    }
+    public void act() {}
     
     protected void removeLaserAtEdge() {
         if(isAtEdge()) getWorld().removeObject(this);

@@ -10,7 +10,6 @@ public class galaxy extends World
 {
     public int score = 0;
     
-    
     /**
      * Constructor for objects of class galaxy.
      * 

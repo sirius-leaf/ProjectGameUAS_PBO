@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Win extends World
 {
-
     /**
      * Constructor for objects of class Win.
      * 
@@ -16,20 +15,8 @@ public class Win extends World
     public Win()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1200, 600, 1); 
-        //prepare();
+        super(1200, 600, 1);
         Greenfoot.playSound("win.wav");
         Greenfoot.stop();
-    }
-    
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepare()
-    {
-
-        playAgain playAgain = new playAgain();
-        addObject(playAgain,608,474);
     }
 }

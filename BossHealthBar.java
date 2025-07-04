@@ -14,10 +14,7 @@ public class BossHealthBar extends Actor
      * Act - do whatever the BossHealthBar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        // Add your action code here.
-    }
+    public void act() {}
     
     public void MoveWithAlien() {
         setLocation(alien.getX() + 80, alien.getY());

@@ -1,17 +1,15 @@
 #BlueJ class context
 comment0.target=AlienShip
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ AlienShip\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=AlienShip()
-comment2.params=health
-comment2.target=AlienShip(int)
+comment1.params=health
+comment1.target=AlienShip(int)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ AlienShip\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
-comment3.target=void\ act()
-comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ AlienShip\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.target=void\ HitCheck()
 comment4.params=
-comment4.target=void\ HitCheck()
-comment5.params=
-comment5.target=boolean\ HealthIsZero()
-comment6.params=ship
-comment6.target=void\ Death(greenfoot.Actor)
-numComments=7
+comment4.target=boolean\ HealthIsZero()
+comment5.params=ship
+comment5.target=void\ Death(greenfoot.Actor)
+numComments=6

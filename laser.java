@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class laser extends Lasers
 {
-    public laser() {}
-    
     public laser(int rotation) {
         setRotation(rotation);
     }
@@ -20,14 +18,7 @@ public class laser extends Lasers
      */
     public void act()
     {
-        addScore();
         move(10); //arah dan kecepatan tembakan laser
         removeLaserAtEdge();
-    }
-    
-    public void addScore() {
-        galaxy m = (galaxy) getWorld();
-        if (m != null) {
-        }
     }
 }

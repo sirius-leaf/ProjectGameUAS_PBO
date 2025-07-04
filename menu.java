@@ -27,13 +27,6 @@ public class menu extends World
     private void prepare()
     {
         start start = new start();
-        addObject(start,572,452);
-        start.setLocation(660,461);
-        start.setLocation(584,466);
-        start.setLocation(608,503);
-        start.setLocation(593,461);
-        start.setLocation(590,474);
-        start.setLocation(644,480);
-        start.setLocation(592,472);
+        addObject(start,592,472);
     }
 }

@@ -12,7 +12,7 @@ public class alien2 extends AlienShip
     
     public alien2() {
         super(1);
-        moveSpeed = 5 + Greenfoot.getRandomNumber(10);
+        moveSpeed = 4 + Greenfoot.getRandomNumber(8);
     }
     
     /**
@@ -36,8 +36,7 @@ public class alien2 extends AlienShip
         if(HealthIsZero())
         {
             world.addScore(10);
+            Death(newAlien2);
         }
-        
-        Death(newAlien2);
     }
 }

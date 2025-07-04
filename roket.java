@@ -63,8 +63,7 @@ public class Roket extends Actor
         int bulletOriginDistance = 100;
         int playerRotation = getRotation();
         
-        delay++;
-        if(delay==15) // kecepatan nembak roket
+        if(delay++ > 15) // kecepatan nembak roket
         {
             getWorld().addObject(new laser(playerRotation), getX() + (int)(bulletOriginDistance * Math.cos(playerRotation * (Math.PI / 180.0))), getY() + (int)(bulletOriginDistance * Math.sin(playerRotation * (Math.PI / 180.0))));
             Greenfoot.playSound("laserShootPlayer.wav");

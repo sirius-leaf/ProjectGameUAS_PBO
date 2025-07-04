@@ -21,7 +21,6 @@ public class asteroid extends Actor
      * Act - do whatever the asteroid wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int x=1;
     public void act()
     {
         setLocation(getX() - moveSpeed[0], getY() + moveSpeed[1]);
